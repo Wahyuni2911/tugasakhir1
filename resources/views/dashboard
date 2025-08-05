@@ -1,0 +1,48 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Selamat datang, <strong>{{ Auth::user()->name }}</strong>!</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Card Statistik -->
+<div class="container">
+    <div class="row">
+        @if(Auth::user()->role == 'admin' || Auth::user()->role == 'pegawai')
+        <div class="col-lg-4 col-md-6">
+            <div class="card bg-primary text-white shadow">
+                <div class="card-body">
+                    <h5>Total Anggota</h5>
+                    <h2></h2>
+                </div>
+            </div>
+        </div>
+        @endif
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card bg-success text-white shadow">
+                <div class="card-body">
+                    <h5>Total Buku</h5>
+                    <h2></h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card bg-warning text-dark shadow">
+                <div class="card-body">
+                    <h5>Buku Dipinjam</h5>
+                    <h2></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection
