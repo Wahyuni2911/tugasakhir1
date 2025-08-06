@@ -40,6 +40,7 @@ class PerekamKunjunganController extends Controller
             'kategori_kunjungan_id' => 'required|exists:kategori_kunjungan,id',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
+            'tujuan' => 'required|string',
         ]);
 
         // Simpan data kunjungan
@@ -49,6 +50,7 @@ class PerekamKunjunganController extends Controller
             'status' => $request->status,
             'prodi' => $request->prodi,
             'kategori_kunjungan_id' => $request->kategori_kunjungan_id,
+            'tujuan' => $request->tujuan,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
             'kartu_anggota_id' => $anggota->kartuAnggota->id,

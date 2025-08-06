@@ -42,7 +42,8 @@ Route::post('/pendaftaran-anggota/store', [KelolaAnggotaController::class, 'stor
 Route::get('/kelola-anggota/{id}/edit', [KelolaAnggotaController::class, 'edit'])->name('kelola-anggota.edit');
 Route::put('/kelola-anggota/{id}', [KelolaAnggotaController::class, 'update'])->name('kelola-anggota.update');
 Route::delete('/kelola-anggota/{id}', [KelolaAnggotaController::class, 'destroy'])->name('kelola-anggota.destroy');
-Route::resource('geolocation', GeolokasiController::class);
+Route::resource('geolocation', GeolokasiController::class)->except(['destroy']);
+Route::delete('/geolocation/reset', [GeolokasiController::class, 'reset'])->name('geolocation.reset');
 Route::resource('program-studi', ProgramStudiController::class);
 Route::resource('kategori-kunjungan', KategoriKunjunganController::class);
 Route::resource('laporan-kunjungan', LaporanKunjunganController::class);

@@ -46,4 +46,12 @@ class GeolokasiController extends Controller
 
         return redirect()->back()->with('success', 'Titik koordinat berhasil disimpan!');
     }
+
+    public function reset()
+    {
+        // Hapus semua data koordinat
+        Geolocation::truncate();
+
+        return redirect()->route('geolocation.index')->with('success', 'Semua data koordinat berhasil dihapus.');
+    }
 }
