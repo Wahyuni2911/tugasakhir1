@@ -136,6 +136,25 @@
             marker.bindPopup(`<strong>${deskripsi}</strong><br>${lat}, ${lng}`);
         });
 
+        // Ambil koordinat dari data yang tersimpan
+        const polygonPoints = savedCoordinates.map(geo => [
+            parseFloat(geo.latitude),
+            parseFloat(geo.longitude)
+        ]);
+
+        // Pastikan ada 4 titik
+        if (polygonPoints.length === 4) {
+            const polygon = L.polygon(polygonPoints, {
+                color: 'blue',
+                weight: 2,
+                fillColor: '#3b82f6', // warna isi
+                fillOpacity: 0.3
+            }).addTo(map);
+
+            // Zoom otomatis agar semua titik terlihat
+            map.fitBounds(polygon.getBounds());
+        }
+
         map.on('click', function(e) {
             if (koordinatIndex >= 4) return;
 
